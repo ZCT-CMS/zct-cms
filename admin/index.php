@@ -26,7 +26,6 @@ if (isset($_SESSION['logged_in']) || isset($_SESSION['admin'])) {
         <li><a href="add.php">Add Article</a></li>
         <li><a href="edit-list.php">Edit Article</a></li>
         <li><a href="delete.php">Delete Article</a></li>
-        <li><a href="upload-img.php">Upload images</a></li>
         <?php if (isset($_SESSION['admin'])) { ?>
           <li><a href="edit-users.php">Edit user list</a></li>
         <?php } ?>

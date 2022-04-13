@@ -32,7 +32,7 @@ if (isset($_GET['id'])) {
           <div class="row align-items-left">
             <div class="subpage_head col-lg-8 text-left">
               <h1><?php echo $data['article_title']; ?></h1>
-              <h6 class="text-white"><?php echo $data['article_author'] ?> @ SCALEUP |
+              <h6 class="text-white"><?php echo $data['article_author'] ?>
                 <b><?php echo date('l jS Y', $data['article_timestamp']) ?></b>
               </h6>
             </div>

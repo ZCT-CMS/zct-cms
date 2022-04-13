@@ -5,13 +5,25 @@ session_start();
 include_once('../connections/connection.php');
 include_once('../connections/article.php');
 $article = new Article;
+$image = new Article;
 
 // Registration check
 if (isset($_SESSION['logged_in']) || isset($_SESSION['admin'])) {
+  $articles = $article->fetch_all();
   if (isset($_GET['articles'])) {
     $articles = $_GET['articles'];
     for ($i = 0; $i < count($articles); $i++) {
       $id = $articles[$i];
+
+      $data = $article->fetch_data($id);
+      $images = $image->fetch_image($id);
+
+      $link = "../images/blog/" . $images['filename'];
+      //Deleting an old thumbnail
+      if (file_exists($link)) {
+        unlink($link);
+      }
+
       // Delete an article and all data associated with it from the database
       $query = $pdo->prepare('DELETE FROM Images WHERE image_id = ?');
       $query->bindValue(1, $id);
@@ -29,19 +41,23 @@ if (isset($_SESSION['logged_in']) || isset($_SESSION['admin'])) {
     header('Location: delete.php');
   } else if (isset($_GET['topic'])) {
     // Article filter
-    $topics = $_GET['topic'];
-    $sorted = array();
-    for ($i = 0; $i < count($topics); $i++) {
-      if ($topics[$i] != 'all') {
-        $result = $article->fetch_sorted($topics[$i]);
-        $sorted = array_merge($sorted, $result);
-      } else {
-        unset($sorted);
-        break;
+    if (isset($_GET['topic'])) {
+      $topics = $_GET['topic'];
+      $all = 0;
+      foreach ($topics as $topic) {
+        if ($topic == 'all') {
+          $articles = $article->fetch_all();
+          $topics = [];
+          $all = 1;
+        }
+      }
+      if (
+        $all == 0
+      ) {
+        $articles = $article->fetch_sorted($topics);
       }
     }
   }
-  $articles = $article->fetch_all();
 
 ?>
 
@@ -71,27 +87,20 @@ if (isset($_SESSION['logged_in']) || isset($_SESSION['admin'])) {
               <label for="all"> all</label>
             </li>
             <li>
-              <input type="checkbox" id="research" name="topic[]" value="research">
-              <label for="research"> research</label>
+              <input type="checkbox" id="kancelaria" name="topic[]" value="kancelaria">
+              <label for="kancelaria"> Kancelaria</label>
             </li>
             <li>
-              <input type="checkbox" id="sales" name="topic[]" value="sales"> <label for="sales"> sales</label>
+              <input type="checkbox" id="novaciky" name="topic[]" value="novaciky">
+              <label for="novaciky"> Novaciky</label>
             </li>
             <li>
-              <input type="checkbox" id="hr" name="topic[]" value="hr">
-              <label for="hr"> hr</label>
+              <input type="checkbox" id="baby" name="topic[]" value="baby">
+              <label for="baby"> Baby</label>
             </li>
             <li>
-              <input type="checkbox" id="data" name="topic[]" value="data">
-              <label for="data"> data</label>
-            </li>
-            <li>
-              <input type="checkbox" id="tools" name="topic[]" value="tools">
-              <label for="tools"> tools</label>
-            </li>
-            <li>
-              <input type="checkbox" id="automation" name="topic[]" value="automation">
-              <label for="automation"> automation</label>
+              <input type="checkbox" id="vzacne" name="topic[]" value="vzacne">
+              <label for="vzacne"> Vzacne</label>
             </li>
             <li><input type="submit" value="Sort"></li>
           </ul>
@@ -100,19 +109,6 @@ if (isset($_SESSION['logged_in']) || isset($_SESSION['admin'])) {
       <form action="delete.php" method="get">
         <ol>
           <?php
-          // Remove duplicate articles
-          if (isset($sorted)) {
-            $articles = $sorted;
-            $last_id = -1;
-            for ($i = 0; $i < count($articles); $i++) {
-              for ($j = 0; $j < count($articles); $j++) {
-                if ($articles[$j][0] == $articles[$i][0] && $i != $j) {
-                  array_splice($articles, $i, $i);
-                }
-                $last_id = $articles[$i][0];
-              }
-            }
-          }
           // Display Articles
           foreach ($articles as $article) { ?>
             <li>

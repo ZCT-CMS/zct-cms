@@ -70,27 +70,20 @@ if (isset($_GET['topic'])) {
                   <label for="all"> all</label>
                 </li>
                 <li>
-                  <input type="checkbox" id="research" name="topic[]" value="research">
-                  <label for="research"> research</label>
+                  <input type="checkbox" id="kancelaria" name="topic[]" value="kancelaria">
+                  <label for="kancelaria"> Kancelaria</label>
                 </li>
                 <li>
-                  <input type="checkbox" id="sales" name="topic[]" value="sales"> <label for="sales"> sales</label>
+                  <input type="checkbox" id="novaciky" name="topic[]" value="novaciky">
+                  <label for="novaciky"> Novaciky</label>
                 </li>
                 <li>
-                  <input type="checkbox" id="hr" name="topic[]" value="hr">
-                  <label for="hr"> hr</label>
+                  <input type="checkbox" id="baby" name="topic[]" value="baby">
+                  <label for="baby"> Baby</label>
                 </li>
                 <li>
-                  <input type="checkbox" id="data" name="topic[]" value="data">
-                  <label for="data"> data</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="tools" name="topic[]" value="tools">
-                  <label for="tools"> tools</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="automation" name="topic[]" value="automation">
-                  <label for="automation"> automation</label>
+                  <input type="checkbox" id="vzacne" name="topic[]" value="vzacne">
+                  <label for="vzacne"> Vzacne</label>
                 </li>
                 <li><input type="submit" value="Sort"></li>
               </ul>

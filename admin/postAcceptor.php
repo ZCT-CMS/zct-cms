@@ -1,7 +1,7 @@
 <?php
   $accepted_origins = array("http://localhost", "http://192.168.1.1", "https://hard-panda-100.loca.lt");
 
-  $imageFolder = "../../images/blog/";
+  $imageFolder = "../images/blog/";
 
   reset ($_FILES);
   $temp = current($_FILES);

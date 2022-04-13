@@ -19,40 +19,43 @@ if (isset($_SESSION['logged_in']) || isset($_SESSION['admin'])) {
     $card_tags = array();
     for ($i = 0; $i < count($topics); $i++) {
       switch ($topics[$i]) {
-        case "research":
+        case "kancelaria":
           array_push($tags, 1);
-          array_push($card_tags, "research");
+          array_push($card_tags, "kancelaria");
           break;
-        case "sales":
+        case "novaciky":
           array_push($tags, 2);
-          array_push($card_tags, "sales");
+          array_push($card_tags, "novaciky");
           break;
-        case "hr":
+        case "baby":
           array_push($tags, 3);
-          array_push($card_tags, "hr");
+          array_push($card_tags, "baby");
           break;
-        case "data":
+        case "vzacne":
           array_push($tags, 4);
-          array_push($card_tags, "data");
-          break;
-        case "tools":
-          array_push($tags, 5);
-          array_push($card_tags, "tools");
-          break;
-        case "automation":
-          array_push($tags, 6);
-          array_push($card_tags, "automation");
+          array_push($card_tags, "vzacne");
           break;
       }
     }
     $card_tags = join(" ", $card_tags);
 
-    $file_name = $_FILES["uploadfile"]["name"];
-    $temp_name = $_FILES["uploadfile"]["tmp_name"];
-    $folder = "../images/blog/" . $file_name;
+    $thumbnail_name = $_FILES["thumbnail"]["name"];
+    $temp_name = $_FILES["thumbnail"]["tmp_name"];
+    $folder = "../images/blog/" . $thumbnail_name;
+
+    $num = 1;
+    while (file_exists($folder)) {
+      $file_name = pathinfo($thumbnail_name, PATHINFO_FILENAME);
+      $extension = pathinfo($thumbnail_name, PATHINFO_EXTENSION);
+      $file_name = (string)$file_name . $num;
+      $num++;
+      $thumbnail_name = $file_name . "." . $extension;
+      $folder = "../images/blog/" . $thumbnail_name;
+    }
     $allowed_types = array("jpg", "jpeg", "png", "webp", "svg");
-    $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
-    if (in_array(strtolower($file_ext), $allowed_types)) {
+    $thumbnail_ext = pathinfo($thumbnail_name, PATHINFO_EXTENSION);
+
+    if (in_array(strtolower($thumbnail_ext), $allowed_types)) {
       copy($temp_name, $folder);
     }
 
@@ -79,7 +82,7 @@ if (isset($_SESSION['logged_in']) || isset($_SESSION['admin'])) {
 
       $query = $pdo->prepare('INSERT INTO Images (image_id, filename) VALUES (?, ?)');
       $query->bindValue(1, $index);
-      $query->bindValue(2, $file_name);
+      $query->bindValue(2, $thumbnail_name);
       $query->execute();
       // Back to the main page
       header('Location: index.php');
@@ -133,14 +136,14 @@ if (isset($_SESSION['logged_in']) || isset($_SESSION['admin'])) {
         <br />
         <input type="text" name="author" placeholder="Author" required />
         <br />
-        <input type="text" name="topics" placeholder="Topics: hr data..." required>
+        <input type="text" name="topics" placeholder="Topics: kancelaria, novaciky..." required>
         <br />
         <input type="text" name="preview" placeholder="Preview text" required />
         <br />
         <textarea id="mytextarea" rows="15" cols="40" placeholder="Content" name="content"></textarea>
         <br />
         <label for="image">Click To Add Image File</label>
-        <input type="file" name="uploadfile" id="image" style="display:none;" required>
+        <input type="file" name="thumbnail" id="image" style="display:none;" required>
         <span id="old-image"><?php echo $images['filename'] ?></span>
         <br>
         <input type="submit" value="Add article">

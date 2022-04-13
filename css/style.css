@@ -1865,41 +1865,29 @@ span.tag {
   margin-right: 4px;
   /*display: none;*/
 }
-span.tag.research {
+span.tag.kancelaria {
   background-color: var(--color-primary);
 }
-span.tag.research:before {
-  content: "research";
+span.tag.kancelaria:before {
+  content: "kancelaria";
 }
-span.tag.sales {
+span.tag.novaciky {
   background-color: var(--color-primary-dark);
 }
-span.tag.sales:before {
-  content: "sales";
+span.tag.novaciky:before {
+  content: "novaciky";
 }
-span.tag.hr {
+span.tag.baby {
   background-color: var(--color-accent);
 }
-span.tag.hr:before {
-  content: "hr";
+span.tag.baby:before {
+  content: "baby";
 }
-span.tag.tools {
+span.tag.vzacne {
   background-color: var(--color-light);
 }
-span.tag.tools:before {
-  content: "tools";
-}
-span.tag.data {
-  background-color: var(--color-primary);
-}
-span.tag.data:before {
-  content: "data";
-}
-span.tag.automation {
-  background-color: var(--color-primary-dark);
-}
-span.tag.automation:before {
-  content: "automation";
+span.tag.vzacne:before {
+  content: "vzacne";
 }
 
 /* ................................
