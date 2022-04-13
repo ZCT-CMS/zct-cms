@@ -1,6 +1,6 @@
 <?php
 
-
+echo "test";
 include_once('connections/connection.php');
 include_once('connections/article.php');
 
