@@ -31,10 +31,10 @@ if (isset($_GET['topic'])) {
   <?php
   include('includes/includes_head.php');
   ?>
-  <!-- Primary Meta Tags -->
-  <title>Blog pro Kakatus.</title>
 
-  <meta name="title" content="CMS ZCT">
+  <title>Váš zelený priateľ</title>
+
+  <meta name="title" content="Váš zelený priateľ">
   <meta name="description" content="Second zct assignment">
 
 </head>
@@ -46,8 +46,8 @@ if (isset($_GET['topic'])) {
       <div class="container">
         <div class="row align-items-left">
           <div class="subpage_head col-lg-8 text-left">
-            <h1>BLOG</h1>
-            <h5>Tut budet ctot pro kaktusy.</h5>
+            <h1>Váš zelený priateľ</h1>
+            <h5>Asistent pri hľadaní dokonalej domácej rastliny</h5>
           </div>
         </div>
       </div>
@@ -55,25 +55,25 @@ if (isset($_GET['topic'])) {
 
     <section class="site-section">
       <div class="container">
-        <h2 class="section-title gradient">ARTICLES</h2>
+        <h2 class="section-title gradient">Články</h2>
 
         <div id="filterBtnContainer" class="mb-3">
           <!-- Article filter -->
           <form action="index.php" method="get">
             <div id="list" class="dropdown-check-list" tabindex="100">
-              <span class="anchor">Select Topics</span>
+              <span class="anchor">Vyberte témy</span>
               <ul class="items">
                 <li>
                   <input type="checkbox" id="all" name="topic[]" value="all">
-                  <label for="all"> all</label>
+                  <label for="all">Všetky</label>
                 </li>
                 <li>
                   <input type="checkbox" id="kancelaria" name="topic[]" value="kancelaria">
-                  <label for="kancelaria"> Kancelaria</label>
+                  <label for="kancelaria"> Kancelária</label>
                 </li>
                 <li>
                   <input type="checkbox" id="novaciky" name="topic[]" value="novaciky">
-                  <label for="novaciky"> Novaciky</label>
+                  <label for="novaciky"> Nováčik</label>
                 </li>
                 <li>
                   <input type="checkbox" id="baby" name="topic[]" value="baby">
@@ -81,7 +81,7 @@ if (isset($_GET['topic'])) {
                 </li>
                 <li>
                   <input type="checkbox" id="vzacne" name="topic[]" value="vzacne">
-                  <label for="vzacne"> Vzacne</label>
+                  <label for="vzacne"> Vzácne</label>
                 </li>
                 <li><input type="submit" value="Sort"></li>
               </ul>

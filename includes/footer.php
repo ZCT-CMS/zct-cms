@@ -3,8 +3,8 @@
         <div class="row justify-content-between">
 
           <div class="footer-col col-12">
-            <h3 class="text-white">ABOUT US</h3>
-            <p class="text-white text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <h3 class="text-white">O NÁS</h3>
+            <p class="text-white text-justify">Náš blog o izbových rastlinách Vám pomôže vybrať pre vás ideálnu rastlinu. Tiež tu nájdete všetky informácie o rastline a jej starostlivosti.</p>
           </div>
         </div>
       </div>
