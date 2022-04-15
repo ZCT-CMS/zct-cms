@@ -96,11 +96,11 @@ if (isset($_SESSION['logged_in']) || isset($_SESSION['admin'])) {
       $query->bindValue(7, $id, PDO::PARAM_INT);
       $query->execute();
 
-      $query = $pdo->prepare('DELETE FROM Articles_tags WHERE article = ?');
+      $query = $pdo->prepare('DELETE FROM Articles_Tags WHERE article = ?');
       $query->bindValue(1, $id);
       $query->execute();
       for ($i = 0; $i < count($tags); $i++) {
-        $query = $pdo->prepare('INSERT INTO Articles_tags (article, tag) VALUES (?, ?)');
+        $query = $pdo->prepare('INSERT INTO Articles_Tags (article, tag) VALUES (?, ?)');
         $query->bindValue(1, $id);
         $query->bindValue(2, $tags[$i]);
         $query->execute();
@@ -160,7 +160,7 @@ if (isset($_SESSION['logged_in']) || isset($_SESSION['admin'])) {
         <br />
         <input type="text" name="author" placeholder="Author" value="<?php echo $data['article_author'] ?>" required />
         <br />
-        <input type="text" name="topics" placeholder="Topics: kancelaria, novaciky..." value="<?php echo $data['article_tags'] ?>" required>
+        <input type="text" name="topics" placeholder="Topics: kancelaria novaciky..." value="<?php echo $data['article_tags'] ?>" required>
         <br />
         <input type="text" name="preview" placeholder="Preview text" value="<?php echo $data['article_preview'] ?>" required />
         <br />

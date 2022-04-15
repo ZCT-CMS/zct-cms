@@ -29,7 +29,7 @@ if (isset($_SESSION['logged_in']) || isset($_SESSION['admin'])) {
       $query->bindValue(1, $id);
       $query->execute();
 
-      $query = $pdo->prepare('DELETE FROM Articles_tags WHERE article = ?');
+      $query = $pdo->prepare('DELETE FROM Articles_Tags WHERE article = ?');
       $query->bindValue(1, $id);
       $query->execute();
 

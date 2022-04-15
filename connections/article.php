@@ -24,8 +24,8 @@ class Article {
 
     $atributes_query = implode(',', array_fill(0, count($atributes), '?'));
     $query = $pdo->prepare("SELECT * FROM Articles
-                            INNER JOIN Articles_tags ON Articles.article_id =       Articles_tags.article
-                            INNER JOIN Tags ON Articles_tags.tag = Tags.tag_id
+                            INNER JOIN Articles_Tags ON Articles.article_id =       Articles_Tags.article
+                            INNER JOIN Tags ON Articles_Tags.tag = Tags.tag_id
                             WHERE Tags.tag_name IN ($atributes_query)");
     for ($i = 0; $i < count($atributes); $i++) {
       $query->bindValue(($i + 1), $atributes[$i]);

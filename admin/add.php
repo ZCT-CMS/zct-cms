@@ -74,7 +74,7 @@ if (isset($_SESSION['logged_in']) || isset($_SESSION['admin'])) {
 
       $index = $pdo->lastInsertId();
       for ($i = 0; $i < count($tags); $i++) {
-        $query = $pdo->prepare('INSERT INTO Articles_tags (article, tag) VALUES (?, ?)');
+        $query = $pdo->prepare('INSERT INTO Articles_Tags (article, tag) VALUES (?, ?)');
         $query->bindValue(1, $index);
         $query->bindValue(2, $tags[$i]);
         $query->execute();
@@ -136,7 +136,7 @@ if (isset($_SESSION['logged_in']) || isset($_SESSION['admin'])) {
         <br />
         <input type="text" name="author" placeholder="Author" required />
         <br />
-        <input type="text" name="topics" placeholder="Topics: kancelaria, novaciky..." required>
+        <input type="text" name="topics" placeholder="Topics: kancelaria novaciky..." required>
         <br />
         <input type="text" name="preview" placeholder="Preview text" required />
         <br />
