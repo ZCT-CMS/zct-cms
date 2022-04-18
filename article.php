@@ -19,7 +19,7 @@ if (isset($_GET['id'])) {
     include('includes/includes_head.php');
     ?>
     <!-- Primary Meta Tags -->
-    <title>9 Box Grid | Blog | SCALEUP.</title>
+    <title><?php echo $data['article_title']; ?></title>
   </head>
 
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">

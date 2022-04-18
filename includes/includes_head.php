@@ -11,6 +11,3 @@
   <link href="images/icon-leafer.png" rel="icon" type="image/png">
 
   <link rel="stylesheet" href="/css/style.css?v2.2">
-
-
-  <!-- <link href="/images/favicon.png?v4" rel="icon" type="image/png"> -->

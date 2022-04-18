@@ -25,7 +25,7 @@ if (isset($_GET['topic'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 
 <head>
   <?php
@@ -34,7 +34,7 @@ if (isset($_GET['topic'])) {
 
   <title>Váš zelený priateľ</title>
 
-  <meta name="title" content="Váš zelený priateľ">
+  <meta name="title" content="Zeleny priatel">
   <meta name="description" content="Second zct assignment">
 
 </head>
